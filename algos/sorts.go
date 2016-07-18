@@ -69,6 +69,27 @@ func OptimizedBubbleSort(arr []int, length int) []int {
 	return arr
 }
 
+// Implements Optimized Bubble Sort: O(n^2)
+func InsertionSort(arr []int, length int) []int {
+	var i, j int
+	i = 1
+	for i < length {
+		j = i - 1
+		insertElement := arr[i]
+		for j >= 0 {
+			if insertElement < arr[j] {
+				arr[j+1] = arr[j]
+			} else {
+				break
+			}
+			j -= 1
+		}
+		arr[j+1] = insertElement
+		i += 1
+	}
+	return arr
+}
+
 func main() {
 	b := make([]int, 5)
 	b[0] = 12
@@ -76,7 +97,10 @@ func main() {
 	b[2] = 32
 	b[3] = 14
 	b[4] = 7
-	fmt.Println(SelectionSort(b, len(b)))
+
 	fmt.Println(BubbleSort(b, len(b)))
+	fmt.Println(SelectionSort(b, len(b)))
+	fmt.Println(InsertionSort(b, len(b)))
 	fmt.Println(OptimizedBubbleSort(b, len(b)))
+
 }
